@@ -1,0 +1,68 @@
+{% load static %}
+<html>
+<head>
+    <link href="/static/Personnel/css/bootstrap.css" rel="stylesheet"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+{% block head  %}
+    <title>Forest Monitoring Tool</title>
+{% endblock  %}
+    </head>
+<body>
+<style>
+    body
+    {font-family: "Fira Sans-serif", Georgia, serif;}
+</style>
+<div class="container">
+     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-info">
+         <div>
+             <h1><a class="navbar-brand" href="#"><strong>Forest Monitoring Tool</strong></a></h1>
+         </div>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="nav-item active">
+            </li>
+          </ul>
+        </div>
+          <div>
+              {% if request.user.is_authenticated %}
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a style="color:white width: auto" href="{% url 'Personnel:home' %}" class="btn btn-dark my-2 my-sm-0" role="button" data-toggle="modal"
+                   data-target="#login-modal">Home</a></li>
+                        &nbsp;&nbsp;
+                        <li><a style="color:white width: auto" href="{% url 'Personnel:view_map' %}" class="btn btn-dark my-2 my-sm-0" role="button" data-toggle="modal"
+                   data-target="#login-modal">View Map</a></li>
+
+                         <li><a style="color:white width: auto" href="{% url 'Personnel:imagery_data' %}" class="btn btn-dark my-2 my-sm-0" role="button" data-toggle="modal"
+                   data-target="#login-modal">Imagery Data</a></li>
+                        &nbsp;
+                        &nbsp;
+                        <li><a style="color:white width: auto" href="{% url 'Personnel:profile' %}" class="btn btn-dark my-2 my-sm-0" role="button" data-toggle="modal"
+                   data-target="#login-modal">Profile</a></li>
+                        &nbsp;&nbsp;
+                        <!--<li><a style="color:white width: auto" href="{% url 'Personnel:activities_stat' %}" class="btn btn-dark my-2 my-sm-0" role="button" data-toggle="modal"
+                   data-target="#login-modal">Activities Stat</a></li>-->
+                        &nbsp;
+                         <li><a style="color:white width: auto" href="{% url 'Personnel:login' %}" class="btn btn-dark my-2 my-sm-0" role="button" data-toggle="modal"
+                   data-target="#login-modal">Logout</a></li>
+                </ul>
+                </div>
+                <div>
+                    {% else %}
+                    <ul class="nav navbar-nav navbar-right">&nbsp;
+                    <li><a style="color:white width: auto" href="{% url 'Personnel:reset_password' %}" class="btn btn-dark my-2 my-sm-0" role="button" data-toggle="modal"
+                   data-target="#login-modal">Login</a></li>
+                    </ul>
+                    {% endif %}
+                </div>
+
+      </nav>
+    </div>
+
+{% block body  %}
+{% endblock  %}
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+</html>
+
+

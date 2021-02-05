@@ -1,0 +1,159 @@
+{% load static %}
+<html lang="en">
+    <head>
+		  <link href="/static/Personnel/css/bootstrap.css" rel="stylesheet"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+{% block head  %}
+    <title>Actvities</title>
+{% endblock  %}
+        <!-- Chart.js -->
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js'></script>
+    
+    	<!-- Load jQuery -->
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	    <style>
+
+    		body
+    		{font-family: "Fira Sans-serif", Georgia, serif;}
+
+
+			.btn-outline-primary {
+				border-color: #FF7011;
+				color: #25303B;
+				pointer-events: none;
+			}
+
+			.btn-primary {
+				background-color: #FF7011;
+				border-color: #FF7011;
+				border-radius: 10px;
+				font-size: 1.2em;
+			}
+
+			h3 {
+				font-weight: bold;
+				color: #25303B;
+			}
+
+			h5 {
+				font-family: 'Montserrat';
+			}
+
+			.main-content {
+				padding-left: 50px;
+				padding-top: 15px;
+    			padding-bottom: 50px;
+
+			}
+
+			table, th, td {
+    			border: 1px solid #DCDCDC;
+			}
+
+			th {
+				font-size: 1.05em;
+				background-color: #E9E9E9;
+			}
+
+			th, td { 
+				padding: 5px; 
+			}
+	    </style>
+
+    </head>
+<style>
+    body
+    {font-family: "Fira Sans-serif", Georgia, serif;}
+</style>
+    <body>
+<div class="container">
+     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-info">
+         <div>
+             <h1><a class="navbar-brand" href="#"><strong>Forest Monitoring Tool</strong></a></h1>
+         </div>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="nav-item active">
+            </li>
+          </ul>
+        </div>
+          <div>
+              {% if request.user.is_authenticated %}
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a style="color:white width: auto" href="{% url 'Personnel:home' %}" class="btn btn-dark my-2 my-sm-0" role="button" data-toggle="modal"
+                   data-target="#login-modal">Home</a></li>
+                        &nbsp;&nbsp;
+                        <li><a style="color:white width: auto" href="{% url 'Personnel:view_map' %}" class="btn btn-dark my-2 my-sm-0" role="button" data-toggle="modal"
+                   data-target="#login-modal">View Map</a></li>
+
+                        &nbsp
+                        &nbsp
+                         <li><a style="color:white width: auto" href="{% url 'Personnel:imagery_data' %}" class="btn btn-dark my-2 my-sm-0" role="button" data-toggle="modal"
+                   data-target="#login-modal">Imagery Data</a></li>
+                        &nbsp;
+                        &nbsp;
+                        <li><a style="color:white width: auto" href="{% url 'Personnel:profile' %}" class="btn btn-dark my-2 my-sm-0" role="button" data-toggle="modal"
+                   data-target="#login-modal">Profile</a></li>
+                        &nbsp;&nbsp;
+                        <li><a style="color:white width: auto" href="{% url 'Personnel:activities' %}" class="btn btn-dark my-2 my-sm-0" role="button" data-toggle="modal"
+                   data-target="#login-modal">Activities Stat</a></li>
+                        &nbsp;&nbsp;
+                         <li><a style="color:white width: auto" href="{% url 'Personnel:login' %}" class="btn btn-dark my-2 my-sm-0" role="button" data-toggle="modal"
+                   data-target="#login-modal">Logout</a></li>
+                </ul>
+                </div>
+                <div>
+                    {% else %}
+                    <ul class="nav navbar-nav navbar-right">&nbsp;
+                    <li><a style="color:white width: auto" href="{% url 'Personnel:reset_password' %}" class="btn btn-dark my-2 my-sm-0" role="button" data-toggle="modal"
+                   data-target="#login-modal">Login</a></li>
+                    </ul>
+                    {% endif %}
+                </div>
+
+      </nav>
+</div>
+ <nav class="navbar navbar-inverse">
+		    <div class="container-fluid">
+		        <div class="navbar-header">
+		            <a class="navbar-brand" href="#">FMT</a>
+		        </div>
+
+		        <ul class="nav navbar-nav navbar-right">
+		            <li><a href="/"><button type="button" class="btn btn-primary">Search Again</button></a></li>
+		        </ul>
+		    </div>
+		</nav>
+
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	    <nav class="navbar navbar-inverse">
+		    <div class="container-fluid">
+		        <ul class="nav navbar-nav navbar-right">
+		            <li><a href="/"><button type="button" class="btn btn-primary">Search Again</button></a></li>
+		        </ul>
+		    </div>
+		</nav>
+
+		<div class="main-content">
+
+		    {% block content %}
+            {% endblock %}
+
+		</div> <!-- End main-content -->
+
+
+		<!-- Load JS for Bootstrap-->
+		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+	</body>
+</html>
+

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block head%}
+<title>Forest Manager-Edit</title>
+{% endblock%}
+
+{%block body %}
+<br>
+<br>
+    <div class="container">
+        <form method="POST">
+            {{ csrf_token }}
+            {{form.as_p }}
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+{% endblock  %}
+

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{%block head %}
+
+{% load leaflet_tags %}
+<head>
+{% leaflet_js %}
+{% leaflet_css %}
+</head>
+<link rel=”stylesheet” href="{%static 'leaflet.css '%}">
+<script src="{% static 'leaflet-src.js' %}"></script>
+
+<script type="text/javascript" src="{% static 'leaflet.ajax.js' %}"></script>
+<script src="{% static 'spin.js' %}"></script>
+<script src="{% static 'leaflet.spin.js' %}"></script>
+{% endblock  %}
+{%block body %}
+<br>
+<br>
+<br>
+
+{% leaflet_map "Malawi" %}
+{% endblock%}
+{%block content%}
+
+<body>
+
+
+{% leaflet_map "Kang'ina" %}
+
+</body>
+{%endblock%}

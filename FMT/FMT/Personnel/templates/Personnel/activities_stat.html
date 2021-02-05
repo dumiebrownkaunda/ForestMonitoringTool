@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block head  %}
+<title>FMT - Activities Stats</title>
+{% endblock  %}
+
+{% block content %}
+
+<a href='https://coveralls.io/github/mapbox/pixelmatch?branch=master'>
+    <img src='https://coveralls.io/repos/github/mapbox/pixelmatch/badge.svg?branch=master' alt='Coverage Status' /></a>
+
+
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ query_form.as_p }}
+        <input type="submit" value="Submit" />
+    </form>
+
+{% endblock %}
+

@@ -1,0 +1,12 @@
+% extends 'Activities/base_graph.html' %}
+
+{% block content %}
+
+<form action="/" method="post">
+	{% csrf_token %}
+	{{ query_form.as_p }}
+	<input type="submit" value="Submit" />
+</form>
+
+{% endblock %}
+

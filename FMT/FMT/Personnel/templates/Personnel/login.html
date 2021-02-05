@@ -1,0 +1,75 @@
+{% extends "admin/base_site.html" %}
+{% load i18n static %}
+{% block extrastyle %}{{ block.super }}
+<link rel="stylesheet" type="text/css" href="/static/admin/css/login.css" />
+{{ form.media }}
+{% endblock %}
+
+{% block bodyclass %}{{ block.super }} login{% endblock %}
+
+{% block usertools %}{% endblock %}
+
+{% block nav-global %}
+<style>
+  body.login {
+    background-image: url('/static/Personnel/img/wallpaper.jpg');
+     }
+  #branding h1, #branding h1 a:link, #branding h1 a:visited {
+    color: #ffffff;
+    text-align: center;
+}
+#container {
+      padding: 3px;
+}
+.login #container {
+      margin: 168px auto;
+}
+
+</style>
+
+{% endblock %}
+
+{% block content_title %}
+
+{% endblock %}
+
+{% block breadcrumbs %}
+
+{% endblock %}
+
+{% block content %}
+{% if form.errors and not form.non_field_errors %}
+<p class="errornote">
+{% if form.errors.items|length == 1 %}{% trans "Please correct the error below." %}{% else %}{% trans "Please correct the errors below." %}{% endif %}
+</p>
+{% endif %}
+
+{% if form.non_field_errors %}
+{% for error in form.non_field_errors %}
+<p class="errornote">
+    {{ error }}
+</p>
+{% endfor %}
+{% endif %}
+
+<div id="content-main">
+
+<form method="post" id="login-form">{% csrf_token %}
+  <div class="form-row">
+    {{ form.username.errors }}
+    {{ form.username.label_tag }} {{ form.username }}
+  </div>
+  <div class="form-row">
+    {{ form.password.errors }}
+    {{ form.password.label_tag }} {{ form.password }}
+    <input type="hidden" name="next" value="{{ next }}">
+  </div>
+
+  <div class="submit-row">
+    <label>&nbsp;</label><input type="submit" value="{% trans 'Log In' %}">
+      <label>&nbsp;</label><a href="{% url 'Personnel:reset_password' %}" type="submit" role="button">Reset Password</a>
+  </div>
+</form>
+
+</div>
+{% endblock %}
